@@ -1,7 +1,7 @@
 import { Formik, Field, Form } from 'formik';
 import styles from './TransactionForm.module.css';
 
-function validateTransactionName(value) {
+function validateFormInput(value) {
     if (!value) {
         return 'Required';
     }
@@ -25,7 +25,7 @@ function TransactionForm() {
                             <Field
                                 name="transactionName"
                                 className={styles.form__item_field}
-                                validate={validateTransactionName}
+                                validate={validateFormInput}
                             />
                             {errors.transactionName &&
                                 touched.transactionName && (
@@ -37,11 +37,20 @@ function TransactionForm() {
                     </label>
 
                     <label className={styles.form__item}>
-                        Amount:
-                        <Field
-                            name="amount"
-                            className={styles.form__item_field}
-                        />
+                        <div>
+                            Amount:
+                            <Field
+                                name="amount"
+                                type="number"
+                                className={styles.form__item_field}
+                                validate={validateFormInput}
+                            />
+                            {errors.amount && touched.amount && (
+                                <div className={styles.form__item_error}>
+                                    {errors.amount}
+                                </div>
+                            )}
+                        </div>
                     </label>
 
                     <label className={styles.form__item}>
