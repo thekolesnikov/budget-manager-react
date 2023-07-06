@@ -1,0 +1,41 @@
+.form {
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 20px 10px;
+    width: 400px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form__item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form__item_error {
+    color: red;
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.form__item:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.form__item_field {
+    margin-left: 5px;
+    outline: 1px solid;
+    padding: 5px 10px;
+    width: 250px;
+}
+
+.form__button {
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: aqua;
+    width: 200px;
+    border-radius: 5px;
+}
