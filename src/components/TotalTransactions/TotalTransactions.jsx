@@ -12,8 +12,6 @@ function TotalTransactions() {
         }
     }, 0);
 
-    console.log(totalEarnings);
-
     const totalExpenses = transactions.reduce((accumulator, transaction) => {
         if (transaction.transactionType === 'Expense') {
             return accumulator + transaction.amount;

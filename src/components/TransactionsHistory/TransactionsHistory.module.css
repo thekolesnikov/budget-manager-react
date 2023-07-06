@@ -1,0 +1,36 @@
+.history {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.history__item_green {
+    padding: 5px 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background-color: rgb(59, 144, 59);
+}
+
+.history__item_red {
+    padding: 5px 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background-color: rgb(230, 85, 85);
+}
+
+.history__button {
+    cursor: pointer;
+    padding: 3px 6px;
+}
+
+.history__button:hover {
+    background-color: rgb(177, 175, 173);
+}
