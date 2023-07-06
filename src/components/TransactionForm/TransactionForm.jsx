@@ -1,4 +1,6 @@
 import { Formik, Field, Form } from 'formik';
+import { useDispatch } from 'react-redux';
+import { transactionSlice } from '../../redux/slices/transactionsSlice';
 import styles from './TransactionForm.module.css';
 
 function validateFormInput(value) {
@@ -8,6 +10,9 @@ function validateFormInput(value) {
 }
 
 function TransactionForm() {
+    const dispatch = useDispatch();
+    const { addTransaction } = transactionSlice.actions;
+
     return (
         <Formik
             initialValues={{
@@ -15,7 +20,10 @@ function TransactionForm() {
                 amount: '',
                 transactionType: 'earning',
             }}
-            onSubmit={(values) => console.log(values)}
+            onSubmit={(values, { resetForm }) => {
+                dispatch(addTransaction(values));
+                resetForm();
+            }}
         >
             {({ errors, touched }) => (
                 <Form className={styles.form}>
@@ -37,8 +45,8 @@ function TransactionForm() {
                     </label>
 
                     <label className={styles.form__item}>
+                        Amount:
                         <div>
-                            Amount:
                             <Field
                                 name="amount"
                                 type="number"

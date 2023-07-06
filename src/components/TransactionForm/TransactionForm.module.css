@@ -39,3 +39,7 @@
     width: 200px;
     border-radius: 5px;
 }
+
+.form__button:hover {
+    background-color: rgb(16, 175, 175);
+}
