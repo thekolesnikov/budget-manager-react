@@ -18,9 +18,10 @@ function TransactionForm() {
             initialValues={{
                 transactionName: '',
                 amount: '',
-                transactionType: 'earning',
+                transactionType: 'Earning',
             }}
             onSubmit={(values, { resetForm }) => {
+                values.id = Date.now();
                 dispatch(addTransaction(values));
                 resetForm();
             }}

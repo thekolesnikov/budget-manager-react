@@ -1,0 +1,14 @@
+.total__item {
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+.total__item_green {
+    color: green;
+    margin-left: 5px;
+}
+
+.total__item_red {
+    color: red;
+    margin-left: 5px;
+}

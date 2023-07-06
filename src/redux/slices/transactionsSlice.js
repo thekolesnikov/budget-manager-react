@@ -11,6 +11,7 @@ export const transactionSlice = createSlice({
                 transactionName: action.payload.transactionName,
                 amount: action.payload.amount,
                 transactionType: action.payload.transactionType,
+                id: action.payload.id,
             });
         },
         // changeStatus(state, action) {
