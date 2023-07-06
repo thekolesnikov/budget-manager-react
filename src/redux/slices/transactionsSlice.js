@@ -14,12 +14,11 @@ export const transactionSlice = createSlice({
                 id: action.payload.id,
             });
         },
-        // changeStatus(state, action) {
-        //     const filterArr = state.filter(
-        //         (todo) => todo.id === action.payload
-        //     );
-        //     filterArr[0].status = !filterArr[0].status;
-        // },
+        deleteTransaction(state, action) {
+            return state.filter(
+                (transaction) => transaction.id !== action.payload
+            );
+        },
     },
 });
 
