@@ -11,6 +11,9 @@ function Navmenu() {
                 <NavLink className={styles.header__item} to="/history">
                     Budget history
                 </NavLink>
+                <NavLink className={styles.header__item} to="/palindrom">
+                    Palindrom
+                </NavLink>
             </div>
         </header>
     );

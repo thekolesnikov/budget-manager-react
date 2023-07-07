@@ -12,33 +12,41 @@ function TransactionsHistory() {
 
     return (
         <div className={styles.history}>
-            {transactions.map((transaction) => {
-                let date = timeConverter(transaction.id);
-                return (
-                    <div
-                        className={
-                            transaction.transactionType === 'Earning'
-                                ? styles.history__item_green
-                                : styles.history__item_red
-                        }
-                        key={transaction.id}
-                    >
-                        <p>Transaction name: {transaction.transactionName}</p>
-                        <p>Total: {transaction.amount}$</p>
-                        <p>Date: {date}</p>
-                        <p>Transaction type: {transaction.transactionType}</p>
-                        <button
-                            className={styles.history__button}
-                            onClick={() => {
-                                removeFromLS(transaction.id);
-                                dispatch(deleteTransaction(transaction.id));
-                            }}
+            {transactions.length ? (
+                transactions.map((transaction) => {
+                    let date = timeConverter(transaction.id);
+                    return (
+                        <div
+                            className={
+                                transaction.transactionType === 'Earning'
+                                    ? styles.history__item_green
+                                    : styles.history__item_red
+                            }
+                            key={transaction.id}
                         >
-                            Delete
-                        </button>
-                    </div>
-                );
-            })}
+                            <p>
+                                Transaction name: {transaction.transactionName}
+                            </p>
+                            <p>Total: {transaction.amount}$</p>
+                            <p>Date: {date}</p>
+                            <p>
+                                Transaction type: {transaction.transactionType}
+                            </p>
+                            <button
+                                className={styles.history__button}
+                                onClick={() => {
+                                    removeFromLS(transaction.id);
+                                    dispatch(deleteTransaction(transaction.id));
+                                }}
+                            >
+                                Delete
+                            </button>
+                        </div>
+                    );
+                })
+            ) : (
+                <div>No transactions</div>
+            )}
         </div>
     );
 }

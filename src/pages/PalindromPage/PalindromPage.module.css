@@ -1,0 +1,18 @@
+.form__input {
+    outline: 1px solid black;
+    padding: 5px 10px;
+    font-size: 18px;
+    margin-right: 20px;
+    min-width: 300px;
+}
+
+.form__button {
+    cursor: pointer;
+    padding: 6px 10px;
+    font-size: 18px;
+    background-color: aquamarine;
+}
+
+.form__button:hover {
+    background-color: rgb(53, 216, 162);
+}
