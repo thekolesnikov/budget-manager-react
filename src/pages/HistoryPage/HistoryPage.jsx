@@ -1,11 +1,7 @@
 import TransactionsHistory from '../../components/TransactionsHistory/TransactionsHistory';
 
 function HistoryPage() {
-    return (
-        <div>
-            <TransactionsHistory />
-        </div>
-    );
+    return <TransactionsHistory />;
 }
 
 export default HistoryPage;

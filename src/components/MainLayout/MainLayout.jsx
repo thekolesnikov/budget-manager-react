@@ -17,12 +17,12 @@ function MainLayout() {
     });
 
     return (
-        <div>
+        <>
             <NavMenu />
             <main className="container">
                 <Outlet />
             </main>
-        </div>
+        </>
     );
 }
 

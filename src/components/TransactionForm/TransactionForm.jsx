@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Formik, Field, Form } from 'formik';
 import { useDispatch } from 'react-redux';
 import { transactionSlice } from '../../redux/slices/transactionsSlice';
@@ -10,7 +11,9 @@ function validateFormInput(value) {
     }
 }
 
-function TransactionForm() {
+function TransactionForm({ totalBalance }) {
+    const [error, setError] = useState('');
+
     const dispatch = useDispatch();
     const { addTransaction } = transactionSlice.actions;
 
@@ -22,10 +25,18 @@ function TransactionForm() {
                 transactionType: 'Earning',
             }}
             onSubmit={(values, { resetForm }) => {
-                values.id = Date.now();
-                addToLS(values);
-                dispatch(addTransaction(values));
-                resetForm();
+                if (
+                    values.transactionType === 'Expense' &&
+                    totalBalance < values.amount
+                ) {
+                    setError('Insufficient funds');
+                } else {
+                    values.id = Date.now();
+                    addToLS(values);
+                    dispatch(addTransaction(values));
+                    setError('');
+                    resetForm();
+                }
             }}
         >
             {({ errors, touched }) => (
@@ -40,7 +51,7 @@ function TransactionForm() {
                             />
                             {errors.transactionName &&
                                 touched.transactionName && (
-                                    <div className={styles.form__item_error}>
+                                    <div className={styles.form__error}>
                                         {errors.transactionName}
                                     </div>
                                 )}
@@ -57,7 +68,7 @@ function TransactionForm() {
                                 validate={validateFormInput}
                             />
                             {errors.amount && touched.amount && (
-                                <div className={styles.form__item_error}>
+                                <div className={styles.form__error}>
                                     {errors.amount}
                                 </div>
                             )}
@@ -77,6 +88,11 @@ function TransactionForm() {
                     <button type="submit" className={styles.form__button}>
                         Submit
                     </button>
+                    {error && (
+                        <div className={styles.form__error}>
+                            You can't do it. Insufficient funds
+                        </div>
+                    )}
                 </Form>
             )}
         </Formik>

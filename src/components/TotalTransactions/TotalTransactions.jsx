@@ -1,7 +1,8 @@
 import { useSelector } from 'react-redux';
 import styles from './TotalTransactions.module.css';
+import { useEffect } from 'react';
 
-function TotalTransactions() {
+function TotalTransactions({ totalBalance, setTotalBalance }) {
     const transactions = useSelector((state) => state.transactions);
 
     const totalEarnings = transactions.reduce((accumulator, transaction) => {
@@ -20,7 +21,7 @@ function TotalTransactions() {
         }
     }, 0);
 
-    const totalBalance = totalEarnings - totalExpenses;
+    useEffect(() => setTotalBalance(totalEarnings - totalExpenses));
 
     return (
         <div>
