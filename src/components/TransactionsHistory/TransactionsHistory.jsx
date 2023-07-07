@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import styles from './TransactionsHistory.module.css';
 import { timeConverter } from '../../utils/TimeConverter';
 import { transactionSlice } from '../../redux/slices/transactionsSlice';
+import { removeFromLS } from '../../utils/LocalStorage';
 
 function TransactionsHistory() {
     const transactions = useSelector((state) => state.transactions);
@@ -28,9 +29,10 @@ function TransactionsHistory() {
                         <p>Transaction type: {transaction.transactionType}</p>
                         <button
                             className={styles.history__button}
-                            onClick={() =>
-                                dispatch(deleteTransaction(transaction.id))
-                            }
+                            onClick={() => {
+                                removeFromLS(transaction.id);
+                                dispatch(deleteTransaction(transaction.id));
+                            }}
                         >
                             Delete
                         </button>

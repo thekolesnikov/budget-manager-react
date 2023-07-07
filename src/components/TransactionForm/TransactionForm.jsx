@@ -2,6 +2,7 @@ import { Formik, Field, Form } from 'formik';
 import { useDispatch } from 'react-redux';
 import { transactionSlice } from '../../redux/slices/transactionsSlice';
 import styles from './TransactionForm.module.css';
+import { addToLS } from '../../utils/LocalStorage';
 
 function validateFormInput(value) {
     if (!value) {
@@ -22,6 +23,7 @@ function TransactionForm() {
             }}
             onSubmit={(values, { resetForm }) => {
                 values.id = Date.now();
+                addToLS(values);
                 dispatch(addTransaction(values));
                 resetForm();
             }}
@@ -61,7 +63,6 @@ function TransactionForm() {
                             )}
                         </div>
                     </label>
-
                     <label className={styles.form__item}>
                         Transaction type:
                         <Field
@@ -73,7 +74,6 @@ function TransactionForm() {
                             <option value="Expense">Expense</option>
                         </Field>
                     </label>
-
                     <button type="submit" className={styles.form__button}>
                         Submit
                     </button>
